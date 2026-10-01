@@ -18,7 +18,7 @@ const pageTitles: Record<string, string> = {
 };
 
 function BrandMark({ small = false }: { small?: boolean }) {
-  return <span className={`brand-mark ${small ? "brand-mark--small" : ""}`} aria-hidden="true"><span>N</span></span>;
+  return <span className={`brand-mark ${small ? "brand-mark--small" : ""}`} aria-hidden="true"><span>AMS</span></span>;
 }
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -30,7 +30,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <main className="signin-screen">
       <div className="signin-card">
         <BrandMark />
-        <div className="eyebrow">PERSONAL ACADEMIC INTELLIGENCE</div>
+        <div className="eyebrow">CRACKING AMS</div>
         <h1>Your records,<br /><em>in clear view.</em></h1>
         <p>Sign in to open your private academic workspace. Imported records stay tied to your account.</p>
         <Button className="signin-button" size="lg" onClick={() => startLogin()}>Continue securely <span aria-hidden="true">→</span></Button>
@@ -44,8 +44,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <div className="app-frame">
       <aside className="desktop-rail">
-        <button className="brand-lockup" onClick={() => setLocation("/")} aria-label="Nexora home">
-          <BrandMark /><span><strong>Nexora</strong><small>ACADEMIC INTELLIGENCE</small></span>
+        <button className="brand-lockup" onClick={() => setLocation("/")} aria-label="CRACKING AMS home">
+          <BrandMark /><span><strong>CRACKING AMS</strong><small>ACADEMIC INTELLIGENCE</small></span>
         </button>
         <div className="rail-label">WORKSPACE</div>
         <nav className="rail-nav" aria-label="Main navigation">
@@ -67,7 +67,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </aside>
       <div className="app-column">
         <header className="topbar">
-          <div className="mobile-brand"><BrandMark small /><strong>Nexora</strong></div>
+          <div className="mobile-brand"><BrandMark small /><strong>CRACKING AMS</strong></div>
           <div className="topbar-title"><span className="eyebrow">YOUR ACADEMIC COMMAND CENTER</span><h2>{pageTitles[location] ?? "Academic workspace"}</h2></div>
           <div className="topbar-actions">
             <span className="private-pill"><i /> PRIVATE</span>
@@ -76,7 +76,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
         </header>
         <main className="page-main">{children}</main>
-        <footer className="page-footer"><span><BrandMark small /> Nexora</span><span>Only your imported and authorized records power these insights.</span></footer>
+        <footer className="page-footer"><span><BrandMark small /> CRACKING AMS</span><span>Only your imported and authorized records power these insights.</span></footer>
       </div>
       <nav className="mobile-nav" aria-label="Mobile navigation">
         {mobileLinks.map(link => {

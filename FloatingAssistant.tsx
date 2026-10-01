@@ -22,7 +22,7 @@ export default function FloatingAssistant() {
   };
   return <div className="floating-assistant">
     {open && <section className="floating-assistant-panel" aria-label="Academic assistant">
-      <div className="floating-assistant-header"><div className="flex items-center gap-2"><span className="brand-mark brand-mark--small"><span>N</span></span><div><strong>Ask Nexora</strong><div className="small-meta">Grounded in your records</div></div></div><button className="icon-button" onClick={() => setOpen(false)} aria-label="Close assistant"><X size={16} /></button></div>
+      <div className="floating-assistant-header"><div className="flex items-center gap-2"><span className="brand-mark brand-mark--small"><span>AMS</span></span><div><strong>Ask CRACKING AMS</strong><div className="small-meta">Grounded in your records</div></div></div><button className="icon-button" onClick={() => setOpen(false)} aria-label="Close assistant"><X size={16} /></button></div>
       <div className="chat-thread" style={{ maxHeight: 280, marginTop: 12 }}>{messages.slice(-8).map((message, index) => <div key={index} className={`chat-bubble chat-bubble--${message.role}`}>{message.text}</div>)}{busy && <div className="chat-bubble chat-bubble--assistant">Checking your records…</div>}</div>
       <div className="chat-composer"><textarea aria-label="Ask an academic question" placeholder="Ask about attendance, marks, or a document…" value={question} onChange={event => setQuestion(event.target.value)} onKeyDown={event => { if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); void send(); } }} /><Button size="icon" aria-label="Send question" disabled={!question.trim() || busy} onClick={() => void send()}><Send size={15} /></Button></div>
     </section>}
