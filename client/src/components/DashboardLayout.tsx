@@ -22,7 +22,7 @@ function BrandMark({ small = false }: { small?: boolean }) {
 }
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const { loading, user, logout } = useAuth();
+  const { loading, user, logout, login } = useAuth();
   const [location, setLocation] = useLocation();
   const { theme, toggleTheme } = useTheme();
   if (loading) return <div className="loading-shell"><div className="loading-orbit" /><p>Preparing your private workspace…</p></div>;
@@ -33,7 +33,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="eyebrow">CRACKING AMS</div>
         <h1>Your records,<br /><em>in clear view.</em></h1>
         <p>Sign in to open your private academic workspace. Imported records stay tied to your account.</p>
-        <Button className="signin-button" size="lg" onClick={() => startLogin()}>Continue securely <span aria-hidden="true">→</span></Button>
+        <Button className="signin-button" size="lg" onClick={() => login()}>Continue securely <span aria-hidden="true">→</span></Button>
         <div className="signin-note"><span className="status-dot" /> Independent application · No university portal credentials requested</div>
       </div>
     </main>

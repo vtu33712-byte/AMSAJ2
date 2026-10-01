@@ -4,8 +4,8 @@ export function startLogin() {
     name: "Student",
     email: "student@crackingams.local",
     role: "user",
-    createdAt: new Date().toISOString(),
   };
+  localStorage.setItem("cracking-ams-user", JSON.stringify(localUser));
   localStorage.setItem("manus-runtime-user-info", JSON.stringify(localUser));
-  window.location.reload();
+  window.dispatchEvent(new CustomEvent("cracking-ams-auth-change", { detail: localUser }));
 }
