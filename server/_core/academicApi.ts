@@ -5,7 +5,7 @@ import { assignments, credits, materialChunks, materials, notifications, results
 import { getDb } from "../db";
 import { sdk, type AuthenticatedUser } from "./sdk";
 import { invokeLLM } from "./llm";
-import { storagePut } from "../storage";
+import { storagePut } from "../services/storage";
 import { applyAcademicImport, getAttendanceAnalysis, getAssignments, getCredits, getExamDates, getMarks, getResults, getStudentProfile, getSubjectRows, getTimetable, saveStudentSettings, type ImportPayload } from "../services/academic";
 import { authorizedSourceProvider } from "../services/academicDataProvider";
 import { projectedPercent } from "../services/attendance";
