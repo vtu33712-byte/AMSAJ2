@@ -1,0 +1,950 @@
+Build a production-ready **AI-Powered Student Academic Intelligence Platform** for my personal academic use.
+
+The system should combine:
+
+1. Live/authorized academic-data synchronization
+2. Attendance intelligence
+3. Eligibility prediction
+4. Extra-class handling
+5. Academic analytics
+6. PDF/document learning assistant
+7. AI exam preparation
+8. Notifications and alerts
+9. Personal academic dashboard
+
+IMPORTANT:
+- This must be an independent application.
+- Do not impersonate or clone the university's official portal.
+- Do not copy university logos, branding, proprietary assets, or official login pages.
+- Use my own branding.
+- Do not bypass CAPTCHA, authentication, access controls, or security mechanisms.
+- Do not scrape data in a way that violates the university's terms or security controls.
+- Live synchronization must use an authorized API, official export, approved integration, or user-provided data.
+- Never store my university password in frontend code.
+- Never fabricate academic data.
+- Real imported/synchronized data must always be the source of truth.
+
+==================================================
+1. LIVE ACADEMIC DATA SYNCHRONIZATION
+==================================================
+
+The most important requirement is that my dashboard should stay updated as my academic records change.
+
+Architecture:
+
+University/authorized data source
+        ↓
+Secure Integration/API/Import
+        ↓
+Backend
+        ↓
+Database
+        ↓
+AI/Data Processing
+        ↓
+Student Dashboard
+
+Support these synchronization methods:
+
+A. Official API
+B. Authorized university integration
+C. CSV/Excel export
+D. JSON import
+E. Manual upload
+F. Optional browser-assisted sync only when explicitly permitted and technically supported
+
+Create an abstraction layer:
+
+```text
+AcademicDataProvider
+```
+
+with methods such as:
+
+```text
+getStudentProfile()
+getAttendance()
+getTimetable()
+getMarks()
+getResults()
+getAssignments()
+getCredits()
+getCourseMaterials()
+```
+
+This allows the real university API/integration to be connected later without redesigning the application.
+
+Show:
+
+```text
+Last synchronized:
+01 Oct 2026, 6:30 PM
+
+Sync status:
+✓ Up to date
+```
+
+If synchronization fails:
+
+```text
+⚠ Last synchronization failed
+Showing the latest successfully synchronized data.
+```
+
+Never pretend synchronization succeeded.
+
+==================================================
+2. AUTOMATIC ATTENDANCE ENGINE
+==================================================
+
+Create a complete attendance intelligence engine.
+
+For every subject calculate:
+
+```text
+Total Classes
+Present
+Absent
+Current Attendance %
+Required Attendance %
+Remaining Scheduled Classes
+```
+
+Formula:
+
+```text
+Attendance % =
+(Present / Total Classes) × 100
+```
+
+Make the required attendance threshold configurable.
+
+Do not hard-code 75% as universally applicable.
+
+Example:
+
+```text
+Required attendance: 75%
+Current attendance: 68.42%
+```
+
+==================================================
+3. ATTENDANCE ELIGIBILITY CALCULATOR
+==================================================
+
+Create an interactive calculator.
+
+User can enter:
+
+- Current classes
+- Present classes
+- Absent classes
+- Required percentage
+- Expected remaining classes
+
+Calculate:
+
+### Classes required to become eligible
+
+For current:
+
+```text
+Present = P
+Total = T
+Required = R
+```
+
+Find minimum additional classes x where:
+
+```text
+(P + x) / (T + x) >= R
+```
+
+Display:
+
+```text
+You need to attend X consecutive classes
+to reach the required attendance.
+```
+
+==================================================
+4. "HOW MANY CLASSES CAN I MISS?"
+==================================================
+
+Create another calculator.
+
+If the student is currently eligible, calculate:
+
+```text
+Maximum classes that can be missed
+while remaining above the required threshold.
+```
+
+Display:
+
+```text
+You can miss approximately X more classes
+while remaining at or above the configured threshold.
+```
+
+Clearly label this as a mathematical projection, not an official university decision.
+
+==================================================
+5. REMAINING CLASSES PREDICTION
+==================================================
+
+Use timetable information to estimate future classes.
+
+Example:
+
+```text
+Database Management
+Current: 72%
+Required: 75%
+
+Upcoming scheduled classes:
+12
+
+Projected attendance if you attend all:
+78.57%
+```
+
+Display:
+
+```text
+Classes remaining: 12
+Classes required: 4
+Safe after: 4 consecutive attended classes
+```
+
+If timetable data is unavailable:
+
+```text
+Future class count unavailable.
+Upload/synchronize timetable data.
+```
+
+==================================================
+6. EXTRA CLASS ENGINE
+==================================================
+
+This is very important.
+
+Create a separate Extra Classes module.
+
+Track:
+
+```text
+Subject
+Date
+Faculty
+Extra Class
+Attendance status
+Counts toward attendance?
+```
+
+Example:
+
+```text
+Database Management
+
+Regular classes:
+Present: 31
+Total: 45
+
+Extra classes:
+Present: 3
+```
+
+Calculate eligibility according to the configured institutional attendance rules.
+
+IMPORTANT:
+
+Do not automatically assume extra classes count toward official attendance.
+
+Provide configurable rules:
+
+```text
+Extra class counts toward attendance: YES/NO
+Extra class has separate attendance category: YES/NO
+```
+
+If the university's official rules are available through an authorized source, use those rules.
+
+Show:
+
+```text
+Official attendance
+Projected attendance including eligible extra classes
+```
+
+Do not present the projection as an official result.
+
+==================================================
+7. END-OF-SEMESTER PROJECTION
+==================================================
+
+Create a semester attendance simulator.
+
+Inputs:
+
+```text
+Current attendance
+Remaining working days/classes
+Weekly timetable
+Required attendance
+Extra classes
+```
+
+Generate scenarios:
+
+### Scenario A
+Attend every remaining class
+
+### Scenario B
+Miss 1 class per week
+
+### Scenario C
+Miss 2 classes per week
+
+### Scenario D
+Attend all regular + eligible extra classes
+
+Display a chart showing projected attendance.
+
+==================================================
+8. SUBJECT RISK SYSTEM
+==================================================
+
+Automatically categorize each subject.
+
+Example:
+
+```text
+SAFE
+WATCH
+AT RISK
+SHORTAGE
+```
+
+Make the thresholds configurable.
+
+Example:
+
+```text
+>= 80%     SAFE
+75–79.99%  WATCH
+< 75%      SHORTAGE
+```
+
+Do not present these categories as official university categories unless they come from official rules.
+
+==================================================
+9. SMART ATTENDANCE ALERTS
+==================================================
+
+Generate notifications.
+
+Examples:
+
+```text
+⚠ Attendance Alert
+
+Computer Networks dropped below your configured threshold.
+
+Current: 73.33%
+Required: 75%
+```
+
+Another:
+
+```text
+✓ Eligibility Reached
+
+You have reached the configured attendance requirement
+for Data Structures.
+```
+
+Another:
+
+```text
+📅 Upcoming Risk
+
+Based on your timetable, missing the next 2 classes
+may reduce attendance below the configured threshold.
+```
+
+==================================================
+10. ACADEMIC COMMAND CENTER
+==================================================
+
+Create a premium dashboard.
+
+Top cards:
+
+```text
+Overall Attendance
+Current CGPA
+Credits Earned
+Subjects
+Assignments Pending
+Attendance Risk
+```
+
+Main dashboard:
+
+```text
+Attendance Overview
+        ↓
+Subject Risk
+        ↓
+Upcoming Classes
+        ↓
+Assignments
+        ↓
+Recent Marks
+        ↓
+AI Recommendations
+```
+
+==================================================
+11. AI ACADEMIC ASSISTANT
+==================================================
+
+Create a floating AI assistant.
+
+The assistant must understand the user's own academic data.
+
+Example questions:
+
+```text
+What is my current attendance?
+
+Which subject has the lowest attendance?
+
+How many classes do I need to attend?
+
+How many classes can I miss?
+
+Will I become eligible if I attend all remaining classes?
+
+What happens if I miss the next 2 classes?
+
+Which subjects are at risk?
+
+How many extra classes do I need?
+
+What is my current CGPA?
+
+Which subjects have pending assignments?
+```
+
+The AI should retrieve data from the application's database before answering.
+
+Never hallucinate values.
+
+If information is missing:
+
+```text
+I don't have enough data to calculate this.
+Please synchronize/upload your timetable or attendance data.
+```
+
+==================================================
+12. PDF STUDY INTELLIGENCE
+==================================================
+
+Add:
+
+```text
+Study Material
+```
+
+Allow me to upload:
+
+- PDF
+- PPT/PPTX
+- DOC/DOCX
+- TXT
+- Images where supported
+
+Organize materials by:
+
+```text
+Subject
+Unit
+Topic
+Semester
+```
+
+Example:
+
+```text
+Data Structures
+ ├── Unit 1
+ ├── Unit 2
+ ├── Unit 3
+ ├── Unit 4
+ └── Unit 5
+```
+
+==================================================
+13. PDF AI ANALYSIS
+==================================================
+
+When I upload a PDF, automatically process it.
+
+Pipeline:
+
+```text
+PDF
+ ↓
+Text Extraction
+ ↓
+Document Chunking
+ ↓
+Embedding
+ ↓
+Vector Database
+ ↓
+AI Retrieval
+ ↓
+Subject-specific Study Assistant
+```
+
+Do not send the entire document to the AI every time.
+
+Use RAG architecture.
+
+Store document metadata:
+
+```text
+filename
+subject
+unit
+upload date
+page count
+content hash
+```
+
+==================================================
+14. EXAM KEY TOPICS
+==================================================
+
+After uploading a subject PDF, generate:
+
+```text
+Important Topics
+Key Concepts
+Definitions
+Important Formulas
+Important Diagrams
+Short Notes
+5-Mark Questions
+10-Mark Questions
+Possible Viva Questions
+Frequently Mentioned Concepts
+```
+
+Clearly distinguish:
+
+```text
+Extracted from uploaded material
+```
+
+from:
+
+```text
+AI-generated study suggestions
+```
+
+Never claim that an AI-generated question will definitely appear in the exam.
+
+==================================================
+15. CHAPTER SUMMARY
+
+For each chapter generate:
+
+```text
+Chapter Summary
+↓
+Easy Explanation
+↓
+Important Definitions
+↓
+Key Points
+↓
+Examples
+↓
+Formula Sheet
+↓
+Exam Focus
+```
+
+Provide two modes:
+
+### Easy Mode
+
+Explain like a beginner.
+
+### Exam Mode
+
+Give concise points that can be written in an examination.
+
+==================================================
+16. ASK QUESTIONS FROM PDF
+
+Create:
+
+```text
+Ask this document
+```
+
+Examples:
+
+```text
+Explain this topic simply.
+
+Give me a 5-mark answer.
+
+Give me a 10-mark answer.
+
+What is the definition?
+
+Explain with an example.
+
+Create a comparison table.
+
+Give me important points.
+
+Which page contains this topic?
+```
+
+The AI must provide source/page references whenever possible.
+
+==================================================
+17. AUTOMATIC STUDY PLAN
+
+Connect attendance + timetable + exam information + uploaded materials.
+
+Create:
+
+```text
+My Study Planner
+```
+
+Example:
+
+```text
+Monday
+
+6:00–7:00 PM
+Data Structures
+→ Unit 3
+
+7:15–8:00 PM
+Database Management
+→ SQL Joins
+
+8:15–9:00 PM
+Computer Networks
+→ OSI Model
+```
+
+Prioritize subjects based on:
+
+- Exam proximity
+- Weak marks
+- Attendance risk
+- Pending syllabus
+- Uploaded material
+- User-selected priority
+
+Do not make unsupported assumptions about exam dates.
+
+==================================================
+18. EXAM PREPARATION MODE
+
+Create:
+
+```text
+Exam Mode
+```
+
+Features:
+
+- Important topics
+- Flashcards
+- MCQs
+- Short answers
+- Long answers
+- Viva questions
+- Practice test
+- Revision checklist
+- Weak-topic detection
+
+Track:
+
+```text
+Topics learned
+Topics remaining
+Quiz score
+Revision count
+```
+
+==================================================
+19. PERSONAL ACADEMIC KNOWLEDGE BASE
+
+Create a personal RAG knowledge base.
+
+Collections:
+
+```text
+Attendance
+Marks
+Timetable
+Results
+Assignments
+Course Materials
+Notes
+Syllabus
+```
+
+The AI can retrieve relevant information from these sources.
+
+==================================================
+20. BACKEND
+
+Preferred:
+
+Frontend:
+React / Next.js OR preserve existing frontend
+
+Backend:
+Python FastAPI
+
+Database:
+PostgreSQL
+
+Vector database:
+pgvector / Qdrant
+
+AI layer:
+LLM API with configurable provider
+
+File storage:
+Local development storage
+Cloud object storage for production
+
+==================================================
+21. API ARCHITECTURE
+
+Create endpoints:
+
+```text
+GET /api/student
+GET /api/attendance
+GET /api/attendance/analysis
+GET /api/attendance/projection
+GET /api/timetable
+GET /api/marks
+GET /api/results
+GET /api/credits
+GET /api/assignments
+GET /api/materials
+POST /api/materials/upload
+POST /api/materials/analyze
+POST /api/ai/chat
+POST /api/sync
+GET /api/sync/status
+```
+
+==================================================
+22. DATABASE
+
+Create tables:
+
+```text
+students
+subjects
+attendance
+extra_classes
+timetable
+marks
+results
+credits
+assignments
+materials
+material_chunks
+study_topics
+notifications
+sync_logs
+```
+
+Use proper relationships and indexes.
+
+==================================================
+23. SYNCHRONIZATION SAFETY
+
+Every synchronization should create a log:
+
+```text
+Sync started
+Sync completed
+Records added
+Records updated
+Records unchanged
+Records rejected
+Error messages
+```
+
+Show:
+
+```text
+Last successful sync
+```
+
+Do not overwrite valid data when synchronization fails.
+
+Use transactions where appropriate.
+
+==================================================
+24. DASHBOARD AI INSIGHTS
+
+Generate useful insights such as:
+
+```text
+Attendance Insight
+
+You are currently above the configured threshold
+in 6 of 7 subjects.
+
+One subject requires attention.
+```
+
+```text
+Study Insight
+
+Your uploaded materials contain 5 units
+for Data Structures.
+
+Unit 3 has not yet been marked as revised.
+```
+
+Do not make claims that cannot be derived from available data.
+
+==================================================
+25. MOBILE EXPERIENCE
+
+The entire system must work on:
+
+Desktop
+Laptop
+Tablet
+Mobile
+
+Mobile dashboard should have:
+
+Bottom navigation:
+
+```text
+Home
+Attendance
+Study
+AI
+Profile
+```
+
+==================================================
+26. UI STYLE
+
+Premium modern academic command center.
+
+Use:
+
+- Glassmorphism
+- Smooth animations
+- Modern cards
+- Professional typography
+- Responsive charts
+- Dark mode
+- Light mode
+- Sidebar
+- Floating AI assistant
+- Progress indicators
+- Skeleton loading
+- Empty states
+- Toast notifications
+
+Avoid:
+
+- childish UI
+- excessive gradients
+- clutter
+- unnecessary animations
+- fake statistics
+- fake university branding
+
+==================================================
+27. DATA SOURCE PRIORITY
+
+Always use this priority:
+
+1. Live authorized data
+2. Latest successful synchronization
+3. User-imported data
+4. User-entered data
+5. Demo data only when explicitly enabled
+
+Never mix demo data with real data.
+
+==================================================
+28. PRIVACY
+
+Academic information is private.
+
+Implement:
+
+- Secure authentication
+- Password hashing
+- Environment variables
+- Authorization
+- HTTPS-ready architecture
+- Secure file handling
+- Input validation
+- File-size limits
+- File-type validation
+- No passwords in source code
+- No academic data in public URLs
+- No sensitive information in logs
+
+==================================================
+29. IMPORTANT FINAL REQUIREMENT
+
+Build this as a real extensible platform, not a static frontend mockup.
+
+The application must be ready for:
+
+```text
+AUTHORIZED LIVE DATA
+        ↓
+AUTOMATIC SYNCHRONIZATION
+        ↓
+ATTENDANCE ENGINE
+        ↓
+ELIGIBILITY PREDICTION
+        ↓
+ACADEMIC ANALYTICS
+        ↓
+AI ASSISTANT
+        ↓
+PDF RAG STUDY SYSTEM
+        ↓
+EXAM PREPARATION
+```
+
+If the university does not provide an authorized API, implement the complete synchronization architecture with a clearly separated adapter/mock provider so an authorized API or official export can be connected later.
+
+Do NOT attempt to bypass university security or automate access using stolen/shared credentials.
+
+The final product should feel like a **personal AI academic command center**, where my attendance, marks, timetable, results and study materials work together rather than being separate pages.

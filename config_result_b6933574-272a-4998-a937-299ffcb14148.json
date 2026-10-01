@@ -1,0 +1,19 @@
+{
+  "connectorSearch": [
+    {
+      "searchId": "24483abe-3e24-4c61-abf0-252083563f2a",
+      "query": "GitHub",
+      "queryTruncated": false,
+      "matchCount": 1
+    }
+  ],
+  "sessionType": "project",
+  "connectorEnsure": {
+    "query": "GitHub",
+    "match": {
+      "uid": "bbb0df76-66bd-4a24-ae4f-2aac4750d90b",
+      "name": "GitHub",
+      "enabled": false
+    }
+  }
+}
